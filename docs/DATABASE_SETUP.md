@@ -22,6 +22,10 @@ This project uses **Neon** for Postgres:
 |---|---|
 | **Neon org** | `org-blue-salad-15517518` |
 | **Neon project** | `curly-shadow-26743275` |
+| **Console** | [Neon Console → Projects](https://console.neon.tech/app/org-blue-salad-15517518/projects) |
+| **REST API URL** (read-write, no RLS) | `https://ep-purple-sea-a1ziurg2.apirest.ap-southeast-1.aws.neon.tech/neondb/rest/v1` |
+
+The WRS app uses **`DATABASE_URL`** (Postgres connection string from Neon’s **Connection string**) with `@neondatabase/serverless`, not the REST API URL above. The REST URL is for PostgREST-style access (e.g. other tools or future REST clients); keep any API key for it in env only and never in git.
 
 **Steps:**
 
@@ -32,7 +36,10 @@ This project uses **Neon** for Postgres:
    In the project, use the default branch or create one. Note the connection string (e.g. from **Connection details** or **Dashboard**).
 
 3. **Run the schema**  
-   In Neon: **SQL Editor** → paste the contents of **`sql/schema.sql`** from this repo → **Run**. This creates the `employers` and `candidates` tables.
+   Either:
+   - **From the project:** Run `vercel env pull .env.development.local` (after linking Neon to Vercel), then `npm run db:schema` to apply **`sql/schema.sql`**.
+   - **In Neon:** **SQL Editor** → paste the contents of **`sql/schema.sql`** from this repo → **Run**.  
+   This creates the `employers` and `candidates` tables.
 
 4. **Connect Vercel to this Neon project**  
    In [Vercel Marketplace](https://vercel.com/marketplace?category=storage&search=postgres) → **Neon** → **Add Integration** → choose your Vercel project. When prompted, link to the existing Neon project (**curly-shadow-26743275**) or allow Neon to inject `DATABASE_URL` for a new database in that project. Vercel will add `DATABASE_URL` to your project env.

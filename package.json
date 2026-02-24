@@ -7,7 +7,8 @@
   "engines": { "node": ">=18" },
   "scripts": {
     "dev": "vercel dev",
-    "pull-env": "vercel env pull .env.development.local"
+    "pull-env": "vercel env pull .env.development.local",
+    "db:schema": "node scripts/run-schema.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4"
