@@ -1,9 +1,14 @@
 /**
  * WRS Authentication System
  * Role-based access: Admin | Recruiter | Employer | Candidate
- * Demo: localStorage-backed. Production: replace with secure API (JWT, OAuth, etc.)
+ * Uses Vercel API + Postgres when available; falls back to localStorage (demo/dev).
  * GDPR + Philippines Data Privacy Act compliant patterns.
  */
+
+function apiBase() {
+  if (typeof window === 'undefined') return '';
+  return window.location.origin || '';
+}
 
 const AUTH_KEYS = {
     SESSION: 'wrs_session',
@@ -43,7 +48,7 @@ function setSession(user) {
     const session = {
         email: user.email,
         role: user.role,
-        name: user.name || user.companyName || 'User',
+        name: user.name || user.fullName || user.companyName || user.contactName || 'User',
         id: user.id,
         expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000
     };
@@ -100,6 +105,26 @@ function login(email, password, role) {
     return { success: false, error: 'Invalid email or password.' };
 }
 
+async function loginWithApi(email, password, role) {
+    const base = apiBase();
+    if (!base) return login(email, password, role);
+    try {
+        const res = await fetch(`${base}/api/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password, role }),
+        });
+        const data = await res.json();
+        if (data.success && data.user) {
+            setSession(data.user);
+            return { success: true, user: data.user };
+        }
+        return { success: false, error: data.error || 'Invalid email or password.' };
+    } catch (_) {
+        return login(email, password, role);
+    }
+}
+
 function registerEmployer(data) {
     const employers = JSON.parse(localStorage.getItem(AUTH_KEYS.EMPLOYERS) || '[]');
     if (employers.some(e => e.email === data.email)) {
@@ -121,6 +146,31 @@ function registerEmployer(data) {
     return { success: true, user: employer };
 }
 
+async function registerEmployerWithApi(data) {
+    const base = apiBase();
+    if (!base) return registerEmployer(data);
+    try {
+        const res = await fetch(`${base}/api/auth/register/employer`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                companyName: data.companyName,
+                contactName: data.contactName,
+                email: data.email,
+                password: data.password,
+            }),
+        });
+        const result = await res.json();
+        if (result.success && result.user) {
+            setSession(result.user);
+            return { success: true, user: result.user };
+        }
+        return { success: false, error: result.error || 'Registration failed.' };
+    } catch (_) {
+        return registerEmployer(data);
+    }
+}
+
 function registerCandidate(data) {
     const candidates = JSON.parse(localStorage.getItem(AUTH_KEYS.CANDIDATES) || '[]');
     if (candidates.some(c => c.email === data.email)) {
@@ -140,6 +190,32 @@ function registerCandidate(data) {
     localStorage.setItem(AUTH_KEYS.CANDIDATES, JSON.stringify(candidates));
     setSession(candidate);
     return { success: true, user: candidate };
+}
+
+async function registerCandidateWithApi(data) {
+    const base = apiBase();
+    if (!base) return registerCandidate(data);
+    try {
+        const res = await fetch(`${base}/api/auth/register/candidate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                fullName: data.fullName,
+                email: data.email,
+                phone: data.phone || '',
+                resumeUrl: data.resumeUrl || '',
+                password: data.password,
+            }),
+        });
+        const result = await res.json();
+        if (result.success && result.user) {
+            setSession(result.user);
+            return { success: true, user: result.user };
+        }
+        return { success: false, error: result.error || 'Registration failed.' };
+    } catch (_) {
+        return registerCandidate(data);
+    }
 }
 
 function logout() {

@@ -60,11 +60,11 @@
 
     <script src="../js/auth.js"></script>
     <script>
-        document.getElementById('candidate-login-form').addEventListener('submit', function(e) {
+        document.getElementById('candidate-login-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
-            const result = login(email, password, 'candidate');
+            const result = await loginWithApi(email, password, 'candidate');
             const errEl = document.getElementById('login-error');
             if (result.success) {
                 window.location.href = 'candidate-dashboard.html';

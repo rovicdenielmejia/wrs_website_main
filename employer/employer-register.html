@@ -68,7 +68,7 @@
 
     <script src="../js/auth.js"></script>
     <script>
-        document.getElementById('employer-register-form').addEventListener('submit', function(e) {
+        document.getElementById('employer-register-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const data = {
                 companyName: document.getElementById('companyName').value.trim(),
@@ -76,7 +76,7 @@
                 email: document.getElementById('email').value.trim(),
                 password: document.getElementById('password').value
             };
-            const result = registerEmployer(data);
+            const result = await registerEmployerWithApi(data);
             const errEl = document.getElementById('register-error');
             if (result.success) {
                 window.location.href = 'employer-dashboard.html';

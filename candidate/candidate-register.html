@@ -68,7 +68,7 @@
 
     <script src="../js/auth.js"></script>
     <script>
-        document.getElementById('candidate-register-form').addEventListener('submit', function(e) {
+        document.getElementById('candidate-register-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const data = {
                 fullName: document.getElementById('fullName').value.trim(),
@@ -76,7 +76,7 @@
                 phone: document.getElementById('phone').value.trim(),
                 password: document.getElementById('password').value
             };
-            const result = registerCandidate(data);
+            const result = await registerCandidateWithApi(data);
             const errEl = document.getElementById('register-error');
             if (result.success) {
                 window.location.href = 'candidate-dashboard.html';
