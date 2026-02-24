@@ -163,6 +163,10 @@
             document.getElementById('thank-you-headline').textContent = 'Consultation request received';
             document.getElementById('thank-you-message').textContent = 'Our team will contact you within 24–48 hours to schedule your consultation.';
             document.getElementById('application-details').style.display = 'none';
+        } else if (type === 'contact') {
+            document.getElementById('thank-you-headline').textContent = 'Message received';
+            document.getElementById('thank-you-message').textContent = 'Thank you for getting in touch. We will respond as soon as possible.';
+            document.getElementById('application-details').style.display = 'none';
         } else {
             if (name) {
                 document.getElementById('thank-you-headline').textContent = 'Thank you, ' + decodeURIComponent(name) + '!';

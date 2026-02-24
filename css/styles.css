@@ -2203,6 +2203,10 @@ section.reveal .hero-content {
     color: var(--text-light);
     cursor: pointer;
     transition: color 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    line-height: 1;
 }
 
 .modal-close:hover {

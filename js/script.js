@@ -40,7 +40,10 @@ const defaultJobs = [
             'Strong problem-solving, analytical, and communication skills.',
             'Ability to work with cross-functional teams and manage multiple priorities.'
         ],
-        additionalInfo: 'Interested candidates, please DM me directly.'
+        additionalInfo: 'Interested candidates, please DM me directly.',
+        industry: 'Technology',
+        jobType: 'Full-time',
+        featured: true
     },
     {
         id: 2,
@@ -48,6 +51,8 @@ const defaultJobs = [
         location: 'Al Khobar, Saudi Arabia',
         experience: 'Minimum 8 years',
         status: 'active',
+        industry: 'Finance',
+        jobType: 'Full-time',
         description: 'We are looking for an Oracle EBS Finance Techno-Functional Analyst to support and enhance Oracle E-Business Suite Financials in a university environment.',
         responsibilities: [
             'Support Oracle EBS Financial modules (GL, AP, AR, FA, CM)',
@@ -88,10 +93,108 @@ function getActiveJobs() {
     return getJobs().filter(job => job.status === 'active');
 }
 
+// Get filtered jobs (search + location + industry + jobType)
+function getFilteredJobs() {
+    const search = (document.getElementById('jobs-search') && document.getElementById('jobs-search').value) ? document.getElementById('jobs-search').value.trim().toLowerCase() : '';
+    const locationFilter = document.getElementById('jobs-filter-location') ? document.getElementById('jobs-filter-location').value : '';
+    const industryFilter = document.getElementById('jobs-filter-industry') ? document.getElementById('jobs-filter-industry').value : '';
+    const typeFilter = document.getElementById('jobs-filter-type') ? document.getElementById('jobs-filter-type').value : '';
+    let jobs = getActiveJobs();
+    if (search) {
+        jobs = jobs.filter(job => (job.title + ' ' + (job.description || '')).toLowerCase().indexOf(search) !== -1);
+    }
+    if (locationFilter) jobs = jobs.filter(job => (job.location || '').indexOf(locationFilter) !== -1);
+    if (industryFilter) jobs = jobs.filter(job => (job.industry || '') === industryFilter);
+    if (typeFilter) jobs = jobs.filter(job => (job.jobType || '') === typeFilter);
+    return jobs;
+}
+
+// Render a single job card HTML
+function getJobCardHtml(job, isFeatured) {
+    const featuredBadge = (isFeatured || job.featured) ? '<span class="job-status featured">Featured</span>' : '<span class="job-status active">Active</span>';
+    return `
+        <div class="job-card ${isFeatured ? 'job-card--featured' : ''}">
+            <div class="job-image-container">
+                ${job.imageUrl ?
+                    `<img src="${escapeHtml(job.imageUrl)}" alt="${escapeHtml(job.title)}" class="job-image" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'job-image-placeholder\\'><svg width=\\'100\\' height=\\'100\\' viewBox=\\'0 0 100 100\\' fill=\\'none\\' xmlns=\\'http://www.w3.org/2000/svg\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'#8B2635\\' opacity=\\'0.1\\'/><circle cx=\\'50\\' cy=\\'35\\' r=\\'12\\' fill=\\'#8B2635\\' opacity=\\'0.3\\'/><path d=\\'M25 75 Q25 60 50 60 Q75 60 75 75\\' stroke=\\'#8B2635\\' stroke-width=\\'8\\' stroke-linecap=\\'round\\' opacity=\\'0.3\\'/></svg><span class=\\'job-image-icon\\'>💼</span></div>';">` :
+                    `<div class="job-image-placeholder">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="100" height="100" fill="#8B2635" opacity="0.1"/>
+                            <circle cx="50" cy="35" r="12" fill="#8B2635" opacity="0.3"/>
+                            <path d="M25 75 Q25 60 50 60 Q75 60 75 75" stroke="#8B2635" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+                        </svg>
+                        <span class="job-image-icon">💼</span>
+                    </div>`
+                }
+            </div>
+            <div class="job-card-content">
+                ${featuredBadge}
+                <h3>${escapeHtml(job.title)}</h3>
+                <div class="job-meta">
+                    <span>📍 ${escapeHtml(job.location)}</span>
+                    <span>💼 ${escapeHtml(job.experience)}</span>
+                </div>
+                <div class="job-description">${escapeHtml(job.description)}</div>
+                <div class="job-card-actions">
+                    <button class="btn-primary" onclick="viewJobDetails(${job.id})">View Details</button>
+                    <button type="button" class="btn-secondary" onclick="openApplyModal(${job.id})">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Setup jobs page: filters, search, featured
+function setupJobsPage() {
+    const jobsContainer = document.getElementById('jobs-container');
+    const jobsFeatured = document.getElementById('jobs-featured');
+    if (!jobsContainer) return;
+    const activeJobs = getActiveJobs();
+    const locationSelect = document.getElementById('jobs-filter-location');
+    if (locationSelect && activeJobs.length) {
+        const locations = [...new Set(activeJobs.map(j => j.location).filter(Boolean))].sort();
+        locations.forEach(loc => {
+            const opt = document.createElement('option');
+            opt.value = loc;
+            opt.textContent = loc;
+            locationSelect.appendChild(opt);
+        });
+    }
+    function renderFiltered() {
+        const jobs = getFilteredJobs();
+        let featuredJob = null;
+        if (jobsFeatured && jobs.length > 0) {
+            featuredJob = jobs.find(j => j.featured) || jobs[0];
+            jobsFeatured.innerHTML = '<div class="jobs-featured-label">Featured Job</div>' + getJobCardHtml(featuredJob, true);
+            jobsFeatured.style.display = 'block';
+        } else if (jobsFeatured) {
+            jobsFeatured.innerHTML = '';
+            jobsFeatured.style.display = 'none';
+        }
+        const listToShow = featuredJob ? jobs.filter(j => j.id !== featuredJob.id) : jobs;
+        if (listToShow.length === 0 && !featuredJob) {
+            jobsContainer.innerHTML = '<p class="jobs-empty">No jobs match your filters. Try adjusting search or filters.</p>';
+            return;
+        }
+        jobsContainer.innerHTML = listToShow.length === 0 ? '' : listToShow.map(job => getJobCardHtml(job, false)).join('');
+    }
+    const searchInput = document.getElementById('jobs-search');
+    [searchInput, document.getElementById('jobs-filter-location'), document.getElementById('jobs-filter-industry'), document.getElementById('jobs-filter-type')].forEach(el => {
+        if (el) el.addEventListener('input', renderFiltered);
+        if (el) el.addEventListener('change', renderFiltered);
+    });
+    renderFiltered();
+}
+
 // Render jobs (only on pages that have #jobs-container)
 function renderJobs() {
     const jobsContainer = document.getElementById('jobs-container');
     if (!jobsContainer) return;
+    const jobsFeatured = document.getElementById('jobs-featured');
+    if (jobsFeatured) {
+        setupJobsPage();
+        return;
+    }
     const activeJobs = getActiveJobs();
     
     if (activeJobs.length === 0) {
@@ -199,7 +302,7 @@ function viewJobDetails(jobId) {
 // Close modal
 function closeModal() {
     const modal = document.getElementById('job-modal');
-    modal.style.display = 'none';
+    if (modal) modal.style.display = 'none';
 }
 
 // Open apply form modal (Jobs page only)
@@ -221,11 +324,13 @@ function selectJobForApplication(jobId) {
     openApplyModal(jobId);
 }
 
-// File upload handling
+// File upload handling (only on pages that have the resume upload field, e.g. Jobs apply form)
 function setupFileUpload() {
     const fileInput = document.getElementById('resume-upload');
+    if (!fileInput || !fileInput.parentElement) return;
     const fileName = fileInput.parentElement.querySelector('.file-name');
-    
+    if (!fileName) return;
+
     fileInput.addEventListener('change', function(e) {
         if (e.target.files.length > 0) {
             const file = e.target.files[0];
@@ -530,23 +635,25 @@ function setupSectionReveal() {
     sections.forEach(section => section && observer.observe(section));
 }
 
-// Close modal when clicking outside
+// Close modals: use event delegation so close buttons and overlay clicks always work
 function setupModalClose() {
-    const jobModal = document.getElementById('job-modal');
-    const jobCloseBtn = jobModal && jobModal.querySelector('.modal-close:not(.apply-modal-close)');
-    if (jobCloseBtn) jobCloseBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => {
-        if (e.target === jobModal) closeModal();
+    document.addEventListener('click', function(e) {
+        // Click on a close button (any .modal-close)
+        const closeBtn = e.target.closest && e.target.closest('.modal-close');
+        if (closeBtn) {
+            const modal = closeBtn.closest && closeBtn.closest('.modal');
+            if (modal) {
+                if (modal.id === 'job-modal') closeModal();
+                else if (modal.id === 'apply-modal') closeApplyModal();
+            }
+            return;
+        }
+        // Click on modal overlay (backdrop)
+        if (e.target.id === 'job-modal' || e.target.id === 'apply-modal') {
+            if (e.target.id === 'job-modal') closeModal();
+            else closeApplyModal();
+        }
     });
-
-    const applyModal = document.getElementById('apply-modal');
-    if (applyModal) {
-        const applyCloseBtn = applyModal.querySelector('.apply-modal-close');
-        if (applyCloseBtn) applyCloseBtn.addEventListener('click', closeApplyModal);
-        window.addEventListener('click', (e) => {
-            if (e.target === applyModal) closeApplyModal();
-        });
-    }
 }
 
 // Smooth scroll for anchor links

@@ -14,11 +14,14 @@ wiring-website-WRS/
 ├── faq.html
 ├── blogs.html
 ├── book-consultation.html
+├── contact.html
 ├── thank-you.html
 ├── WorkforceRecruitmentSolution-hr.html
 │
 ├── solutions/
 │   ├── solutions.html
+│   ├── employers.html       (dedicated employers page)
+│   ├── job-seekers.html     (dedicated job seekers / talent page)
 │   ├── employer-solutions.html
 │   └── enterprise-global.html
 │
@@ -58,7 +61,7 @@ wiring-website-WRS/
 | Services  | `services/`   |
 | Platform  | `platform/`   |
 | Legal     | `legal/`      |
-| Main      | Home, Why Us, Pricing, About, Jobs, FAQ, Blogs, Book consultation | Root |
+| Main      | Home, Why Us, Pricing, About, Jobs, FAQ, Blogs, Contact, Book consultation | Root |
 
 ## Notes
 

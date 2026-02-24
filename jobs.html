@@ -25,34 +25,34 @@
                     <li><a href="home.html">Home</a></li>
                     <li><a href="why-us.html">Why Us</a></li>
                     <li class="nav-item mega-wrapper">
-                        <a href="solutions.html" class="nav-link">Solutions</a>
+                        <a href="solutions/solutions.html" class="nav-link">Solutions</a>
                         <div class="mega-menu">
                             <div class="mega-grid">
                                 <div class="mega-col">
                                     <h4>👔 Employers</h4>
-                                    <a href="services.html">Talent Acquisition</a>
-                                    <a href="services.html">Executive Search</a>
-                                    <a href="services.html">Contract Staffing</a>
-                                    <a href="recruitment-process.html">Workforce Planning</a>
-                                    <a href="hr-services.html">HR Consulting</a>
-                                    <a href="employer-solutions.html" class="mega-cta red">View Employer Solutions →</a>
+                                    <a href="services/services.html">Talent Acquisition</a>
+                                    <a href="services/services.html">Executive Search</a>
+                                    <a href="services/services.html">Contract Staffing</a>
+                                    <a href="services/recruitment-process.html">Workforce Planning</a>
+                                    <a href="services/hr-services.html">HR Consulting</a>
+                                    <a href="solutions/employers.html" class="mega-cta red">Employers Page →</a>
                                 </div>
                                 <div class="mega-col">
                                     <h4>🏛️ Enterprise</h4>
-                                    <a href="enterprise-global.html">Large-Scale Hiring</a>
-                                    <a href="enterprise-global.html">BPO Staffing</a>
+                                    <a href="solutions/enterprise-global.html">Large-Scale Hiring</a>
+                                    <a href="solutions/enterprise-global.html">BPO Staffing</a>
                                     <a href="pricing.html">SLA Management</a>
-                                    <a href="platform.html">Analytics</a>
-                                    <a href="privacy.html">Compliance</a>
-                                    <a href="enterprise-global.html" class="mega-cta gold">Enterprise Programs →</a>
+                                    <a href="platform/platform.html">Analytics</a>
+                                    <a href="legal/privacy.html">Compliance</a>
+                                    <a href="solutions/enterprise-global.html" class="mega-cta gold">Enterprise Programs →</a>
                                 </div>
                                 <div class="mega-col">
                                     <h4>🌍 Global</h4>
-                                    <a href="enterprise-global.html">International Recruitment</a>
-                                    <a href="enterprise-global.html">Offshore Teams</a>
+                                    <a href="solutions/enterprise-global.html">International Recruitment</a>
+                                    <a href="solutions/enterprise-global.html">Offshore Teams</a>
                                     <a href="jobs.html">Remote Staffing</a>
-                                    <a href="privacy.html">GDPR Advisory</a>
-                                    <a href="hr-services.html">Payroll Support</a>
+                                    <a href="legal/privacy.html">GDPR Advisory</a>
+                                    <a href="services/hr-services.html">Payroll Support</a>
                                     <a href="jobs.html" class="mega-cta blue">Global Talent →</a>
                                 </div>
                                 <div class="mega-col">
@@ -61,17 +61,17 @@
                                     <a href="book-consultation.html">Resume & Career Support</a>
                                     <a href="book-consultation.html">Interview Coaching</a>
                                     <a href="jobs.html">Remote Careers</a>
-                                    <a href="ai-platform.html">Skill Certification</a>
-                                    <a href="jobs.html" class="mega-cta orange">Explore Careers →</a>
+                                    <a href="platform/ai-platform.html">Skill Certification</a>
+                                    <a href="solutions/job-seekers.html" class="mega-cta orange">Job Seekers Page →</a>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item-has-dropdown">
-                        <a href="services.html">Services</a>
+                        <a href="services/services.html">Services</a>
                         <ul class="nav-dropdown" aria-label="Services submenu">
-                            <li><a href="services.html">Recruitment</a></li>
-                            <li><a href="hr-services.html">HR Consultations</a></li>
+                            <li><a href="services/services.html">Recruitment</a></li>
+                            <li><a href="services/hr-services.html">HR Consultations</a></li>
                         </ul>
                     </li>
                     <li><a href="pricing.html">Pricing</a></li>
@@ -79,6 +79,7 @@
                     <li><a href="jobs.html">Jobs</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                 <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                     <span></span><span></span><span></span>
@@ -98,6 +99,39 @@
 
         <section class="jobs-section">
             <div class="container">
+                <div class="jobs-toolbar">
+                    <div class="jobs-search-wrap">
+                        <label for="jobs-search" class="visually-hidden">Search jobs</label>
+                        <input type="search" id="jobs-search" class="jobs-search" placeholder="Search by title or keyword..." aria-label="Search jobs">
+                    </div>
+                    <div class="jobs-filters">
+                        <label for="jobs-filter-location">Location</label>
+                        <select id="jobs-filter-location" class="jobs-filter" aria-label="Filter by location">
+                            <option value="">All locations</option>
+                        </select>
+                        <label for="jobs-filter-industry">Industry</label>
+                        <select id="jobs-filter-industry" class="jobs-filter" aria-label="Filter by industry">
+                            <option value="">All industries</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="BPO">BPO</option>
+                            <option value="Education">Education</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <label for="jobs-filter-type">Job type</label>
+                        <select id="jobs-filter-type" class="jobs-filter" aria-label="Filter by job type">
+                            <option value="">All types</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="jobs-featured" class="jobs-featured" aria-label="Featured jobs">
+                    <!-- Featured job card injected by script when applicable -->
+                </div>
                 <div id="jobs-container" class="jobs-grid">
                     <!-- Jobs rendered by script.js -->
                 </div>
@@ -133,20 +167,24 @@
 
     <div id="job-modal" class="modal">
         <div class="modal-content">
-            <span class="modal-close" aria-label="Close">&times;</span>
+            <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
             <div id="modal-job-details"></div>
         </div>
     </div>
 
     <div id="apply-modal" class="modal">
         <div class="modal-content modal-content--form">
-            <span class="apply-modal-close modal-close" aria-label="Close">&times;</span>
+            <button type="button" class="apply-modal-close modal-close" aria-label="Close modal">&times;</button>
             <h2 class="apply-modal-title">Apply Now</h2>
             <p class="apply-modal-subtitle">Submit your application below. We're here to help you succeed.</p>
             <div class="google-form-embed">
                 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-WzfBUsx75XbcRTkBwatSeyCm00qgxnaatv-Ah57K94LCdw/viewform?embedded=true" title="Application form - Workforce Recruitment Solutions" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
         </div>
+    </div>
+
+    <div id="universal-cta-sticky" class="universal-cta-sticky" aria-label="Quick action">
+        <a href="jobs.html#jobs-container" class="universal-cta-btn">Apply Now</a>
     </div>
 
     <script src="js/script.js"></script>
