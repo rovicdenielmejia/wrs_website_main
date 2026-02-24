@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Employer Dashboard - Hiring dashboard, job management, candidate pipeline. Workforce Recruitment Solutions.">
+    <title>Employer Dashboard | Workforce Recruitment Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-portal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1><a href="employer-dashboard.html" class="nav-brand-link">
+                        <img src="Assets/WRS LOGO.png" alt="Workforce Recruitment Solutions" class="nav-logo">
+                        <span class="nav-brand-title">WRS Employer Portal</span>
+                    </a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="book-consultation.html">Request Dedicated Recruiter</a></li>
+                    <li><a href="#" id="employer-logout">Logout</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="portal-dashboard">
+        <div class="portal-sidebar">
+            <ul>
+                <li><a href="#dashboard" class="active">📊 Hiring Dashboard</a></li>
+                <li><a href="#jobs">📝 Job Management</a></li>
+                <li><a href="#candidates">👥 Candidate Management</a></li>
+                <li><a href="#interviews">📅 Interview Management</a></li>
+                <li><a href="#analytics">📈 Analytics & Reports</a></li>
+                <li><a href="#billing">💼 Billing & Contracts</a></li>
+                <li><a href="#security">🔒 Security & Compliance</a></li>
+            </ul>
+        </div>
+        <div class="portal-main">
+            <div class="dashboard-header">
+                <h1>Employer Dashboard</h1>
+                <div>
+                    <a href="jobs.html" class="cta-button">Post a Job</a>
+                    <a href="book-consultation.html" class="cta-button cta-button--outline">Request Dedicated Recruiter</a>
+                </div>
+            </div>
+
+            <section id="dashboard" class="dashboard-section">
+                <h2 class="visually-hidden">Hiring Dashboard</h2>
+                <div class="stat-row">
+                    <div class="stat-box">
+                        <div class="value" id="stat-active-jobs">0</div>
+                        <div class="label">Active Job Posts</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value" id="stat-candidates">0</div>
+                        <div class="label">Candidates in Pipeline</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="value" id="stat-interviews">0</div>
+                        <div class="label">Scheduled Interviews</div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Active Job Posts</h3>
+                    <div id="employer-jobs-list">No active jobs. <a href="jobs.html">Post your first job</a>.</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Candidate Pipeline</h3>
+                    <p>View shortlisted profiles, download CVs, rate candidates, and request interviews.</p>
+                    <p><em>Connect your job posts to see candidates here.</em></p>
+                </div>
+            </section>
+
+            <section id="jobs" class="dashboard-section">
+                <h2>Job Management</h2>
+                <div class="dashboard-card">
+                    <p>Create and edit job postings, set hiring priorities, define requirements, and upload job descriptions.</p>
+                    <a href="jobs.html" class="cta-button">Manage Jobs</a>
+                </div>
+            </section>
+
+            <section id="candidates" class="dashboard-section">
+                <h2>Candidate Management</h2>
+                <div class="dashboard-card">
+                    <p>View shortlisted profiles, download CVs, rate candidates, leave feedback, and request interviews.</p>
+                    <p><em>Linked with your job posts and WRS recruiter pipeline.</em></p>
+                </div>
+            </section>
+
+            <section id="interviews" class="dashboard-section">
+                <h2>Interview Management</h2>
+                <div class="dashboard-card">
+                    <p>Schedule interviews, video interview integration, calendar sync.</p>
+                    <a href="book-consultation.html" class="cta-button cta-button--outline">Request Interview Support</a>
+                </div>
+            </section>
+
+            <section id="analytics" class="dashboard-section">
+                <h2>Analytics & Reports</h2>
+                <div class="dashboard-card">
+                    <p>Time-to-hire, cost-per-hire, pipeline status, placement success rate.</p>
+                    <p><em>Available with dedicated recruiter engagement.</em></p>
+                    <a href="book-consultation.html" class="cta-button">Request Dedicated Recruiter</a>
+                </div>
+            </section>
+
+            <section id="billing" class="dashboard-section">
+                <h2>Billing & Contracts</h2>
+                <div class="dashboard-card">
+                    <p>Service agreements, invoices, payment history, subscription plans (if applicable).</p>
+                    <a href="mailto:rovicmejia.hrd@gmail.com">Contact billing</a>
+                </div>
+            </section>
+
+            <section id="security" class="dashboard-section">
+                <h2>Security & Compliance</h2>
+                <div class="dashboard-card">
+                    <p>Data privacy controls, user permissions, NDA access, audit logs. GDPR + Philippines Data Privacy aligned.</p>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const session = requireRole(['employer'], 'employer-login.html');
+        if (session) {
+            document.getElementById('employer-logout').addEventListener('click', function(e) {
+                e.preventDefault();
+                logout();
+            });
+            const jobs = typeof getActiveJobs === 'function' ? getActiveJobs() : [];
+            document.getElementById('stat-active-jobs').textContent = jobs.length;
+            document.getElementById('stat-candidates').textContent = '0';
+            document.getElementById('stat-interviews').textContent = '0';
+            if (jobs.length > 0) {
+                document.getElementById('employer-jobs-list').innerHTML = '<ul>' + jobs.map(j => '<li><a href="jobs.html">' + escapeHtml(j.title) + ' – ' + escapeHtml(j.location) + '</a></li>').join('') + '</ul>';
+            }
+        }
+        function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    </script>
+</body>
+</html>

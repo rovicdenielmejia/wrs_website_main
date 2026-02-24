@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Book a consultation with Workforce Recruitment Solutions. Free discovery call for employers and HR leaders.">
+    <title>Book a Consultation | Workforce Recruitment Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-portal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1><a href="home.html" class="nav-brand-link">
+                        <img src="Assets/WRS LOGO.png" alt="Workforce Recruitment Solutions" class="nav-logo">
+                        <span class="nav-brand-title">Workforce Recruitment Solutions</span>
+                    </a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="why-us.html">Why Us</a></li>
+                    <li class="nav-item-has-dropdown">
+                        <a href="services.html">Services</a>
+                        <ul class="nav-dropdown" aria-label="Services submenu">
+                            <li><a href="services.html">Recruitment</a></li>
+                            <li><a href="hr-services.html">HR Consultations</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="jobs.html">Jobs</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="page-header" aria-labelledby="page-heading">
+            <div class="container">
+                <div class="section-label">Free Discovery Call</div>
+                <h1 id="page-heading" class="section-title">Book a Consultation</h1>
+                <p class="section-subtitle">Speak with our team to explore your hiring needs. No obligation.</p>
+            </div>
+        </section>
+
+        <section class="auth-page">
+            <div class="auth-card">
+                <h1>Schedule a Call</h1>
+                <p class="auth-subtitle">We'll reach out within 24–48 hours to arrange a time.</p>
+                <form id="consultation-form" class="consultation-form">
+                    <div class="form-group">
+                        <label for="consult-name">Full Name *</label>
+                        <input type="text" id="consult-name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="consult-email">Email *</label>
+                        <input type="email" id="consult-email" name="email" required placeholder="you@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="consult-phone">Phone</label>
+                        <input type="tel" id="consult-phone" name="phone" placeholder="+63 9XX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="consult-company">Company (if employer)</label>
+                        <input type="text" id="consult-company" name="company" placeholder="Company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="consult-type">I am a</label>
+                        <select id="consult-type" name="type">
+                            <option value="employer">Employer / HR Leader</option>
+                            <option value="job-seeker">Job Seeker</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="consult-message">Message</label>
+                        <textarea id="consult-message" name="message" rows="4" placeholder="Brief description of your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Submit Request</button>
+                </form>
+                <p class="auth-footer">Prefer email? <a href="mailto:rovicmejia.hrd@gmail.com">Contact us directly</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>&copy; 2026 Workforce Recruitment Solutions. All Rights Reserved.</p>
+                    <p>EST. 2023 | Helping Businesses Hire Smarter. Build Stronger Teams. Grow Faster.</p>
+                </div>
+                <div class="footer-contact">
+                    <p class="contact-title">Contact Us</p>
+                    <p class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:rovicmejia.hrd@gmail.com">rovicmejia.hrd@gmail.com</a>
+                    </p>
+                    <p class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <a href="tel:+639755636276">+63 975 563 6276</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('consult-name').value,
+                email: document.getElementById('consult-email').value,
+                phone: document.getElementById('consult-phone').value,
+                company: document.getElementById('consult-company').value,
+                type: document.getElementById('consult-type').value,
+                message: document.getElementById('consult-message').value
+            };
+            const stored = JSON.parse(localStorage.getItem('wrs_consultations') || '[]');
+            stored.push({ ...data, date: new Date().toISOString() });
+            localStorage.setItem('wrs_consultations', JSON.stringify(stored));
+            window.location.href = 'thank-you.html?type=consultation';
+        });
+    </script>
+</body>
+</html>

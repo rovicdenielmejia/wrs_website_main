@@ -1,0 +1,84 @@
+# Netlify Configuration - workforcerecruitmentsolutions.com
+# Workforce Recruitment Solutions
+
+[build]
+  publish = "."
+  command = ""
+
+# Redirects for clean URLs and custom domain
+# Site root and legacy URLs → home page
+[[redirects]]
+  from = "/"
+  to = "/home.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/home.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/WorkforceRecruitmentSolution.html"
+  to = "/home.html"
+  status = 301
+  force = true
+
+# Optional: clean URLs for portfolio pages (e.g. /about → /about.html)
+[[redirects]]
+  from = "/why-us"
+  to = "/why-us.html"
+  status = 301
+[[redirects]]
+  from = "/services"
+  to = "/services.html"
+  status = 301
+[[redirects]]
+  from = "/hr-services"
+  to = "/hr-services.html"
+  status = 301
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 301
+[[redirects]]
+  from = "/jobs"
+  to = "/jobs.html"
+  status = 301
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/Assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Form handling
+[forms]
+  action = "/thank-you.html"
+
+[context.production.environment]
+  SITE_URL = "https://workforcerecruitmentsolutions.com"

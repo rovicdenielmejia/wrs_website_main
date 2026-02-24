@@ -1,0 +1,5 @@
+# Netlify Redirects - workforcerecruitmentsolutions.com
+# Root and legacy → home page
+/ /home.html 301
+/index.html /home.html 301
+/WorkforceRecruitmentSolution.html /home.html 301

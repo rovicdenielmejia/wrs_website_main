@@ -1,0 +1,382 @@
+/* WRS Portal & Conversion Styles */
+
+.hero-cta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-cta-grid .cta-button {
+    min-width: 150px;
+}
+
+.cta-button--employer {
+    background: #0a6e3d;
+    border-color: #0a6e3d;
+}
+
+.cta-button--employer:hover {
+    background: #085d33;
+    border-color: #085d33;
+}
+
+.cta-button--candidate {
+    background: #1a5fb4;
+    border-color: #1a5fb4;
+}
+
+.cta-button--candidate:hover {
+    background: #1553a0;
+    border-color: #1553a0;
+}
+
+.nav-cta {
+    font-weight: 600 !important;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+}
+
+.nav-cta--employer {
+    background: rgba(10, 110, 61, 0.2);
+    color: #4ade80 !important;
+}
+
+.nav-cta--candidate {
+    background: rgba(26, 95, 180, 0.2);
+    color: #62a0ea !important;
+}
+
+.portfolio-card--employer { border-left: 4px solid #0a6e3d; }
+.portfolio-card--candidate { border-left: 4px solid #1a5fb4; }
+
+.conversion-section {
+    padding: 4rem 0;
+    background: var(--bg-surface);
+}
+
+.conversion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.conversion-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.conversion-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-dark);
+}
+
+.conversion-card p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.conversion-card .link-text {
+    display: block;
+    margin-top: 1rem;
+    color: var(--primary-red);
+    font-weight: 500;
+}
+
+/* Auth Pages */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 70px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px var(--shadow);
+}
+
+.auth-card h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.auth-card .auth-subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.auth-tabs a {
+    flex: 1;
+    padding: 0.6rem;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-light);
+    background: var(--bg-elevated);
+}
+
+.auth-tabs a.active,
+.auth-tabs a:hover {
+    background: var(--primary-red);
+    color: white;
+}
+
+.auth-card .form-group {
+    margin-bottom: 1rem;
+}
+
+.auth-card label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    background: var(--bg-body);
+    color: var(--text-dark);
+}
+
+.auth-card button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.auth-card .auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.auth-card .auth-footer a {
+    color: var(--primary-red);
+}
+
+/* Portal Dashboard */
+.portal-dashboard {
+    padding-top: 90px;
+    min-height: 100vh;
+}
+
+.portal-sidebar {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    bottom: 0;
+    width: 260px;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+    padding: 1.5rem 0;
+}
+
+.portal-sidebar ul {
+    list-style: none;
+}
+
+.portal-sidebar li {
+    margin-bottom: 0.25rem;
+}
+
+.portal-sidebar a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.portal-sidebar a:hover,
+.portal-sidebar a.active {
+    color: var(--primary-red);
+    background: rgba(208, 74, 90, 0.1);
+}
+
+.portal-main {
+    margin-left: 260px;
+    padding: 2rem;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.stat-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 120px;
+    padding: 1rem;
+    background: var(--bg-elevated);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-box .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-red);
+}
+
+.stat-box .label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 900px) {
+    .portal-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+
+    .portal-main {
+        margin-left: 0;
+    }
+}
+
+/* Platform identity grid */
+.platform-identity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.platform-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.platform-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-red);
+}
+
+.platform-card p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* Pricing grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pricing-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+}
+
+.pricing-card--featured {
+    border-color: var(--primary-red);
+    box-shadow: 0 4px 20px rgba(208, 74, 90, 0.15);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -10px;
+    right: 1rem;
+    background: var(--primary-red);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.pricing-target {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.pricing-card .services-list {
+    margin-bottom: 1.5rem;
+}
+
+.pricing-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.pricing-features {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pricing-features h3 {
+    margin-bottom: 1rem;
+}
+
+/* Automation list */
+.automation-list {
+    max-width: 720px;
+}

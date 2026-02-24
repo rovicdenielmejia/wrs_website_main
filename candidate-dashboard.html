@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Job Seeker Dashboard - Profile, job matching, application tracking. Workforce Recruitment Solutions.">
+    <title>Job Seeker Dashboard | Workforce Recruitment Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-portal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <div class="nav-brand">
+                    <h1><a href="candidate-dashboard.html" class="nav-brand-link">
+                        <img src="Assets/WRS LOGO.png" alt="Workforce Recruitment Solutions" class="nav-logo">
+                        <span class="nav-brand-title">WRS Job Seeker Portal</span>
+                    </a></h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="jobs.html">Browse Jobs</a></li>
+                    <li><a href="#" id="candidate-logout">Logout</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" class="portal-dashboard">
+        <div class="portal-sidebar">
+            <ul>
+                <li><a href="#profile" class="active">📄 Profile Management</a></li>
+                <li><a href="#jobs">🔍 Job Matching</a></li>
+                <li><a href="#applications">📬 Application Tracking</a></li>
+                <li><a href="#career">🎓 Career Development</a></li>
+                <li><a href="#global">🌍 Global Opportunities</a></li>
+                <li><a href="#messaging">💬 Messaging Center</a></li>
+                <li><a href="#privacy">🔒 Privacy Controls</a></li>
+            </ul>
+        </div>
+        <div class="portal-main">
+            <div class="dashboard-header">
+                <h1>Job Seeker Dashboard</h1>
+                <a href="jobs.html" class="cta-button">Apply to More Jobs</a>
+            </div>
+
+            <section id="profile" class="dashboard-section">
+                <h2>Profile Management</h2>
+                <div class="dashboard-card">
+                    <p>Personal info, Resume/CV upload, skills tagging, certifications, work preferences.</p>
+                    <p id="candidate-welcome">Welcome, <strong id="candidate-name">User</strong>.</p>
+                    <a href="jobs.html" class="cta-button cta-button--outline">Browse Jobs & Apply</a>
+                </div>
+            </section>
+
+            <section id="jobs" class="dashboard-section">
+                <h2>Job Matching System</h2>
+                <div class="dashboard-card">
+                    <p>AI-powered recommendations, saved jobs, custom alerts.</p>
+                    <a href="jobs.html" class="cta-button">View Matching Jobs</a>
+                </div>
+            </section>
+
+            <section id="applications" class="dashboard-section">
+                <h2>Application Tracking</h2>
+                <div class="dashboard-card">
+                    <p>Application status, interview updates, employer feedback.</p>
+                    <p><em>Your applications appear here after you apply through the Jobs page.</em></p>
+                </div>
+            </section>
+
+            <section id="career" class="dashboard-section">
+                <h2>Career Development</h2>
+                <div class="dashboard-card">
+                    <p>Resume builder, interview tips, career coaching booking.</p>
+                    <a href="book-consultation.html" class="cta-button cta-button--outline">Book Career Coaching</a>
+                </div>
+            </section>
+
+            <section id="global" class="dashboard-section">
+                <h2>Global Opportunities</h2>
+                <div class="dashboard-card">
+                    <p>Remote jobs, overseas placements, relocation info.</p>
+                    <a href="jobs.html" class="cta-button cta-button--outline">View Open Roles</a>
+                </div>
+            </section>
+
+            <section id="messaging" class="dashboard-section">
+                <h2>Messaging Center</h2>
+                <div class="dashboard-card">
+                    <p>Chat with recruiters, employer messages.</p>
+                    <a href="mailto:rovicmejia.hrd@gmail.com">Contact WRS</a>
+                </div>
+            </section>
+
+            <section id="privacy" class="dashboard-section">
+                <h2>Privacy Controls</h2>
+                <div class="dashboard-card">
+                    <p>Visibility settings, data download, account deletion. GDPR + Philippines Data Privacy aligned.</p>
+                    <a href="privacy.html">Privacy Policy</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script>
+        const session = requireRole(['candidate'], 'candidate-login.html');
+        if (session) {
+            document.getElementById('candidate-name').textContent = session.name || 'Job Seeker';
+            document.getElementById('candidate-logout').addEventListener('click', function(e) {
+                e.preventDefault();
+                logout();
+            });
+        }
+    </script>
+</body>
+</html>
