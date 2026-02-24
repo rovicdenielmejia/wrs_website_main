@@ -1,5 +1,7 @@
 # WRS Database Setup (Vercel + Postgres)
 
+> **Easy overview first?** See [DATABASE_INTEGRATION.md](DATABASE_INTEGRATION.md) for a simple explanation of how the database connects to the site.
+
 This project stores **employer** and **job seeker (candidate)** accounts in a Postgres database when deployed on Vercel. Locally or without a database, auth falls back to `localStorage` (demo mode).
 
 ## 1. Add a Postgres database to your Vercel project
