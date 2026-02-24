@@ -4,10 +4,7 @@
 User-agent: *
 Allow: /
 
-# Disallow admin panel from search engines
-Disallow: /admin.html
-
-# Allow all other pages
+# Allow key pages
 Allow: /WorkforceRecruitmentSolution.html
 Allow: /thank-you.html
 

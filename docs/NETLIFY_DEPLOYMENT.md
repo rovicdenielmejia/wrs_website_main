@@ -8,8 +8,7 @@ This guide will help you deploy the Workforce Recruitment Solutions website to N
 ### Method 1: Drag & Drop (Easiest)
 
 1. **Prepare Files**
-   - Ensure all files are in the project folder
-   - Files should include: `WorkforceRecruitmentSolution.html`, `admin.html`, `thank-you.html`, CSS files, JS files, and images
+   - Ensure all files are in the project folder (e.g. home.html, book-consultation.html, thank-you.html, solutions/, services/, platform/, legal/, css/, js/, Assets/)
 
 2. **Deploy**
    - Go to [https://app.netlify.com/](https://app.netlify.com/)
@@ -80,13 +79,6 @@ If you configure EmailJS or other services, add environment variables:
 
 Update `script.js` to use: `process.env.EMAILJS_SERVICE_ID`
 
-## 🔐 Admin Access
-
-The admin dashboard is accessible at:
-- `https://your-site.netlify.app/admin.html`
-
-**Security Note:** The admin panel is hidden from navigation but accessible via direct URL. Change default credentials immediately after deployment!
-
 ## 📊 Form Handling
 
 Netlify Forms are automatically detected. To enable:
@@ -132,14 +124,12 @@ Add Netlify plugins in `netlify.toml`:
 ## ✅ Pre-Deployment Checklist
 
 - [ ] All files are in the project folder
-- [ ] Admin credentials changed from defaults
-- [ ] Test all forms locally
+- [ ] Test all forms locally (e.g. book consultation)
 - [ ] Verify all images load correctly
 - [ ] Test responsive design on mobile/tablet/desktop
 - [ ] Check browser console for errors
 - [ ] Update any hardcoded URLs to use relative paths
-- [ ] Review `netlify.toml` configuration
-- [ ] Test admin dashboard functionality
+- [ ] Review `netlify.toml` configuration if present
 
 ## 🐛 Troubleshooting
 
@@ -152,11 +142,6 @@ Add Netlify plugins in `netlify.toml`:
 - Check file paths (use relative paths, not absolute)
 - Ensure file names match exactly (case-sensitive)
 - Verify files are in correct directory
-
-### Admin Dashboard Not Accessible
-- Check URL: `/admin.html` (not `/admin`)
-- Verify file exists in root directory
-- Check browser console for errors
 
 ### SSL Certificate Issues
 - Wait 24-48 hours after domain setup
@@ -174,9 +159,8 @@ Add Netlify plugins in `netlify.toml`:
 1. Test all functionality on live site
 2. Share the URL with stakeholders
 3. Set up custom domain (if applicable)
-4. Configure email notifications (EmailJS)
+4. Configure form/email notifications if using forms
 5. Monitor site analytics in Netlify dashboard
-6. Set up automatic backups
 
 ---
 

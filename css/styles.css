@@ -394,11 +394,6 @@ button {
     border-radius: 4px;
 }
 
-.admin-link {
-    color: var(--primary-red) !important;
-    font-weight: 600;
-}
-
 .nav-toggle {
     display: none;
     flex-direction: column;
