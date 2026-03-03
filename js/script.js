@@ -737,10 +737,15 @@ function setupMobileNav() {
         });
     });
     
-    // Close menu when clicking on a link
+    // Close menu when clicking on a link (but not dropdown triggers - those toggle, not close)
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', function() {
+            // On mobile: don't close when clicking Solutions/About - they toggle dropdowns
+            const parent = this.parentElement;
+            if (window.innerWidth < 900 && (parent?.classList.contains('mega-wrapper') || parent?.classList.contains('nav-item-has-dropdown'))) {
+                return;
+            }
             navMenu.classList.remove('active');
             document.querySelectorAll('.mega-wrapper').forEach(w => w.classList.remove('open'));
             document.querySelectorAll('.nav-item-has-dropdown').forEach(w => w.classList.remove('open'));
