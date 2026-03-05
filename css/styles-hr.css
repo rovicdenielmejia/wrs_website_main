@@ -413,15 +413,27 @@ a, button { -webkit-tap-highlight-color: rgba(30, 58, 95, 0.12); tap-highlight-c
     transform: translateY(-4px);
 }
 .job-image-container {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(135deg, var(--hr-blue) 0%, var(--hr-blue-dark) 100%);
+}
+.job-image-container .job-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.job-image-container .job-image-placeholder {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.job-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 .job-image-icon { font-size: 3rem; opacity: 0.5; }
-.job-image-container .job-image { width: 100%; height: 100%; object-fit: cover; }
 .job-card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
 .job-status {
     display: inline-block;
@@ -850,14 +862,28 @@ a, button { -webkit-tap-highlight-color: rgba(30, 58, 95, 0.12); tap-highlight-c
 #modal-job-details .job-details-content li { margin-bottom: 0.35rem; }
 .modal-job-image {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     margin-bottom: 1.5rem;
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
     background: linear-gradient(135deg, var(--hr-blue) 0%, var(--hr-blue-dark) 100%);
 }
-.modal-job-image .job-image-modal { width: 100%; height: 100%; object-fit: cover; }
-.modal-job-image .job-image-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.modal-job-image .job-image-modal {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.modal-job-image .job-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .modal-job-image .job-image-icon { font-size: 4rem; opacity: 0.5; }
 
 /* Responsive */

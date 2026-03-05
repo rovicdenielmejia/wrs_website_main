@@ -4,6 +4,7 @@ const defaultJobs = [
     {
         id: 1,
         title: 'Oracle HRMS Techno-Functional',
+        imageUrl: 'Assets/Jobs Assets/Oracle-HRMS-Techno-Functional.jpg',
         location: 'KSA',
         experience: '8+ years',
         salaryRange: '',
@@ -34,6 +35,7 @@ const defaultJobs = [
     {
         id: 2,
         title: 'Oracle EBS Finance Techno-Functional Analyst',
+        imageUrl: 'Assets/Jobs Assets/Oracle-EBS-Finance-Techno-Functional-Analyst.jpg',
         location: 'Al Khobar, Saudi Arabia',
         experience: 'Minimum 8 Years',
         salaryRange: '',
@@ -62,6 +64,7 @@ const defaultJobs = [
     {
         id: 3,
         title: 'HR MANAGER',
+        imageUrl: 'Assets/Jobs Assets/HR-Manager.jpg',
         location: 'San Pablo, Laguna',
         experience: '3+ Years of Experience',
         salaryRange: '₱25,000–₱30,000',
@@ -101,6 +104,7 @@ const defaultJobs = [
     {
         id: 4,
         title: 'Barista/Service Crew',
+        imageUrl: 'Assets/Jobs Assets/Service-Crew.jpg',
         location: 'Purok 4, Villa Victoria, Imus',
         experience: 'With/Without Experience',
         salaryRange: 'P300/day + Free Meals & Wifi',

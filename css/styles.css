@@ -1535,7 +1535,7 @@ section.reveal .hero-content {
 
 .job-image-container {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     position: relative;
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
@@ -1543,6 +1543,8 @@ section.reveal .hero-content {
 }
 
 .job-image-container .job-image {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1554,13 +1556,12 @@ section.reveal .hero-content {
     background-color: var(--gray-light);
 }
 
-.job-image-placeholder {
-    width: 100%;
-    height: 100%;
+.job-image-container .job-image-placeholder {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     background: linear-gradient(135deg, rgba(0, 48, 73, 0.3) 0%, rgba(0, 31, 51, 0.2) 100%);
 }
 
@@ -2406,14 +2407,17 @@ section.reveal .hero-content {
 
 .modal-job-image {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     margin-bottom: 2rem;
     border-radius: 12px;
     overflow: hidden;
+    position: relative;
     background: linear-gradient(135deg, var(--primary-red) 0%, var(--dark-red) 100%);
 }
 
 .modal-job-image .job-image-modal {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2423,12 +2427,11 @@ section.reveal .hero-content {
 }
 
 .modal-job-image .job-image-placeholder {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     background: linear-gradient(135deg, rgba(139, 38, 53, 0.15) 0%, rgba(107, 26, 34, 0.15) 100%);
 }
 
