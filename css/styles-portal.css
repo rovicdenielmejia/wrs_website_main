@@ -1318,7 +1318,7 @@
 
 /* ========== Jobs page – premium ========== */
 .premium-layout .hero.jobs-hero {
-    padding: 5.5rem 0 6rem;
+    padding:4.5rem 0 3rem;
     background: linear-gradient(165deg, var(--navy) 0%, var(--royal) 40%, var(--navy) 100%);
 }
 
@@ -1356,7 +1356,7 @@
 }
 
 .premium-layout .jobs-section.premium-section {
-    padding: 4.5rem 0 5rem;
+    padding: 2rem 0 5rem;
     background: var(--bg-body);
 }
 

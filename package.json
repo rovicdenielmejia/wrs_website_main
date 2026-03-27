@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "WRS - HR & Recruitment Solutions information and hiring site",
   "private": true,
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
   }
 }
