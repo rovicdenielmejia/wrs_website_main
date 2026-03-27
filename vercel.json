@@ -22,6 +22,7 @@
     { "source": "/legal/terms", "destination": "/legal/terms.html" },
     { "source": "/platform/ai-platform", "destination": "/platform/ai-platform.html" },
     { "source": "/hr", "destination": "/WorkforceRecruitmentSolution-hr.html" },
+    { "source": "/be-a-partner", "destination": "/be-a-partner.html" },
     { "source": "/blog/hire-smarter-2026", "destination": "/blog/hire-smarter-2026.html" },
     { "source": "/blog/pre-screening-saves-time", "destination": "/blog/pre-screening-saves-time.html" },
     { "source": "/blog/hire-right-first-time", "destination": "/blog/hire-right-first-time.html" },
@@ -70,7 +71,8 @@
     { "source": "/blog/employee-retention-advantage.html", "destination": "/blog/employee-retention-advantage", "permanent": true },
     { "source": "/blog/employer-branding-smes.html", "destination": "/blog/employer-branding-smes", "permanent": true },
     { "source": "/blog/employer-branding-salary-alt.html", "destination": "/blog/employer-branding-salary-alt", "permanent": true },
-    { "source": "/WorkforceRecruitmentSolution-hr.html", "destination": "/hr", "permanent": true }
+    { "source": "/WorkforceRecruitmentSolution-hr.html", "destination": "/hr", "permanent": true },
+    { "source": "/be-a-partner.html", "destination": "/be-a-partner", "permanent": true }
   ],
   "headers": [
     {
